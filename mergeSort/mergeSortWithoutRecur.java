@@ -55,7 +55,7 @@ public class mergeSortWithoutRecur {
         }
         return arr;
     }
-    public static void sort(int[] arr){
+    public static int[] sort(int[] arr){
         int[] spareArr=new int[arr.length];
         for (int i = 0; i < spareArr.length; i++) {
             spareArr[i]=arr[i];
@@ -70,12 +70,7 @@ public class mergeSortWithoutRecur {
             //4  4  5  5   8  9  10 11   16 19 20 23
             //6  6  7  7   12 13 14 15   24 27 28 32  
             step=(int)Math.pow(2, count)-1;
-
-            // when one arr is sorted we can do an extra loop to make them the same
-            // so we don't need to consider whether to return the arr or the spareArr
-            if(step>arr.length+1){
-                break;
-            }
+            
             for(int i=0; i<arr.length; i=i+step*2+2){
                 if(count%2==0){
                     merge(arr, spareArr, i, i+step,i+step+1,i+step*2+1);
@@ -84,23 +79,58 @@ public class mergeSortWithoutRecur {
                 }
             }
             count++;
+            // when we sort the array with one merge, we can break
+            // the last element is step*2+1,check for lookloop for deduction of last element 
+            // i+step*2+1 when i==0;
+            // so when step*2+1 is larger than the last index arr.length-1
+            if (step * 2 + 2 > arr.length) {
+                break;
+            }
         }
-        // if(count%2==0){
-        //     return arr;
-        // }else{
-        //     return spareArr;
-        // }
+        
+        if(count%2==0){
+            return arr;
+        }else{
+            return spareArr;
+        }
     }
 
+    public static boolean isSorted(int[] arr){
+        int previous=arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(previous>arr[i]){
+                return false;
+            }
+            previous=arr[i];
+        }
+        return true;
+    }
+    public static void show(int[] arr){
+        for (int i : arr) {
+            System.out.printf("%d,", i);
+        }
+        System.out.println("\n");
+    }
+    public static void test(int total){
+        Random r=new Random();
+        for(int i=0;i<total;i++){
+            int[] arr=generate(r.nextInt(1,1000000));
+            int[] res=sort(arr);
+            System.out.println(isSorted(res));
+            if(isSorted(res)==false){
+                show(res);
+            }
+        } 
+    }
     public static void main(String[] args) {
-        int[] arr=generate(10000000);
-        long start=System.currentTimeMillis();
-        mergeSortWithoutRecur.sort(arr);
-        long end=System.currentTimeMillis();
-        System.out.println(end-start);
-        // for(int i:arr){
-        //     System.out.printf("%d ",i);
-        // }
+        //it can sort 100million data in around 7s
+        // int[] arr=generate(100000000);
+        // long start=System.currentTimeMillis();
+        // int[] res=mergeSortWithoutRecur.sort(arr);
+        // long end=System.currentTimeMillis();
+        // System.out.println(end-start);
+        // System.out.println(isSorted(res));
+        test(100);git
     }
 
 }
