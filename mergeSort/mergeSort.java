@@ -93,9 +93,5 @@ public class mergeSort {
         mergeSort.sort(arr);
         long end=System.currentTimeMillis();
         System.out.println(end-start);
-
-        // for(int i:arr){
-        //     System.out.println(i);
-        // 
     }
 }
