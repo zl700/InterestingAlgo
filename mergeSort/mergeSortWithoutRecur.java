@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class mergeSortWithoutRecur {
@@ -123,14 +124,23 @@ public class mergeSortWithoutRecur {
         } 
     }
     public static void main(String[] args) {
-        //it can sort 100million data in around 7s
-        // int[] arr=generate(100000000);
-        // long start=System.currentTimeMillis();
-        // int[] res=mergeSortWithoutRecur.sort(arr);
-        // long end=System.currentTimeMillis();
-        // System.out.println(end-start);
-        // System.out.println(isSorted(res));
-        test(100);
+        // it can sort 100million data in around 7s
+        // but it is 3 times slower than java defalut quickSort
+        int[] arr=generate(10000000);
+        int[] arr2=new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            arr2[i]=arr[i];
+        }
+        long start=System.currentTimeMillis();
+        int[] res=mergeSortWithoutRecur.sort(arr);
+        long end=System.currentTimeMillis();
+        System.out.println(end-start);
+
+        start=System.currentTimeMillis();
+        Arrays.sort(arr2);
+        end=System.currentTimeMillis();
+        System.out.println(end-start);
+        // test(100);
     }
 
 }
