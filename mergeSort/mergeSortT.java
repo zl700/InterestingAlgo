@@ -57,7 +57,7 @@ public class mergeSortT {
         return list;
     }
     public static void main(String[] args) {
-        List<Integer> list = generate(10000000);
+        List<Integer> list = generate(100000000);
         long start=System.currentTimeMillis();
         mergeSortT.sort(list);
         long end=System.currentTimeMillis();
