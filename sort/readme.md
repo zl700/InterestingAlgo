@@ -8,3 +8,4 @@ extra experiments:
 2. mergeSort without recursion is 2 times faster than the recursion one(data size 10 million);
 3. sort with red black tree is even slower
 4. java version 17, default sort, arrays.sort and collections.sort are quicker than mergeSort now.
+5. quickSort is not stable and it's average performance is slower than mergeSortWihtoutRecur(data size 100 million)
