@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//what if I want to find the smallest range which contains my target with binarySearch
+//we just need to adjust binarySearch a little
+//but the edge case is kind of crasy
 public class BinarySearchRange<T extends Comparable<T>> {
     public BinarySearchRange() {
 
