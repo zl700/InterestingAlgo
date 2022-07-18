@@ -4,7 +4,8 @@ import java.util.List;
 
 //what if I want to find the smallest range which contains my target with binarySearch
 //we just need to adjust binarySearch a little
-//but the edge case is kind of crasy
+//but the edge case is kind of crazy
+//please let me know If I made a mistake
 public class BinarySearchRange<T extends Comparable<T>> {
     public BinarySearchRange() {
 
@@ -57,7 +58,7 @@ public class BinarySearchRange<T extends Comparable<T>> {
         if (l == 0 && compareArr0AndTarget > 0) {
             return new int[] { -1, 0 };
         } else if (r == list.size() - 1 && compareArrLastAndTarget < 0) {
-            return new int[] { r, list.size() - 1 };
+            return new int[] { r, list.size() };
         } else if (compareArr0AndTarget == 0) {
             return new int[] { l, l };
         } else if (compareArrLastAndTarget == 0) {
@@ -70,8 +71,8 @@ public class BinarySearchRange<T extends Comparable<T>> {
         Integer[] arr = new Integer[] { 1, 2, 3, 4, 7, 8, 9, 11, 14, 19 };
         List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 7, 8, 9, 11, 14, 19));
         BinarySearchRange<Integer> bs = new BinarySearchRange<>();
-        int[] range1 = bs.searchRange(arr, 20);
-        int[] range2 = bs.searchRange(arr, 20);
+        int[] range1 = bs.searchRange(arr, 0);
+        int[] range2 = bs.searchRange(list, 0);
         for (int i : range1) {
             System.out.printf("%d ", i);
         }
